@@ -94,7 +94,7 @@ This project is organized as a **pnpm workspace**:
 ## 📡 **Backend API**
 
 The Backend exposes a clean set of REST endpoints used by the frontend to interact with the clock, timer, and NATS messaging system.
-
+![api swagger](./backend-api.png)
 ### **Health**
 
 #### GET `/api/health`
