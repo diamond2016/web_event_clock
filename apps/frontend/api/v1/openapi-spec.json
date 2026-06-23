@@ -1,0 +1,689 @@
+{
+  "openapi": "3.0.3",
+  "info": { "title": "Web Event Clock API", "version": "1.0.0" },
+  "components": { "schemas": {} },
+  "paths": {
+    "/api/health": {
+      "get": { "responses": { "200": { "description": "Default Response" } } }
+    },
+    "/api/subscribe/{channel}": {
+      "post": {
+        "parameters": [
+          { "in": "path", "name": "toJSONSchema", "required": true },
+          {
+            "schema": {
+              "type": "object",
+              "shape": {
+                "channel": {
+                  "def": { "type": "string" },
+                  "type": "string",
+                  "format": null,
+                  "minLength": null,
+                  "maxLength": null
+                }
+              }
+            },
+            "in": "path",
+            "name": "def",
+            "required": true
+          },
+          {
+            "schema": "object",
+            "in": "path",
+            "name": "type",
+            "required": true
+          },
+          { "in": "path", "name": "parse", "required": true },
+          { "in": "path", "name": "safeParse", "required": true },
+          { "in": "path", "name": "parseAsync", "required": true },
+          { "in": "path", "name": "safeParseAsync", "required": true },
+          { "in": "path", "name": "spa", "required": true },
+          { "in": "path", "name": "encode", "required": true },
+          { "in": "path", "name": "decode", "required": true },
+          { "in": "path", "name": "encodeAsync", "required": true },
+          { "in": "path", "name": "decodeAsync", "required": true },
+          { "in": "path", "name": "safeEncode", "required": true },
+          { "in": "path", "name": "safeDecode", "required": true },
+          { "in": "path", "name": "safeEncodeAsync", "required": true },
+          { "in": "path", "name": "safeDecodeAsync", "required": true }
+        ],
+        "responses": {
+          "201": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "def": {
+                    "type": "object",
+                    "shape": {
+                      "success": {
+                        "def": { "type": "boolean" },
+                        "type": "boolean"
+                      },
+                      "message": {
+                        "def": { "type": "string" },
+                        "type": "string",
+                        "format": null,
+                        "minLength": null,
+                        "maxLength": null
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "def": {
+                    "type": "object",
+                    "shape": {
+                      "success": {
+                        "def": { "type": "boolean" },
+                        "type": "boolean"
+                      },
+                      "message": {
+                        "def": { "type": "string" },
+                        "type": "string",
+                        "format": null,
+                        "minLength": null,
+                        "maxLength": null
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "def": {
+                    "type": "object",
+                    "shape": {
+                      "success": {
+                        "def": { "type": "boolean" },
+                        "type": "boolean"
+                      },
+                      "message": {
+                        "def": { "type": "string" },
+                        "type": "string",
+                        "format": null,
+                        "minLength": null,
+                        "maxLength": null
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/unsubscribe/{channel}": {
+      "post": {
+        "parameters": [
+          { "in": "path", "name": "toJSONSchema", "required": true },
+          {
+            "schema": {
+              "type": "object",
+              "shape": {
+                "channel": {
+                  "def": { "type": "string" },
+                  "type": "string",
+                  "format": null,
+                  "minLength": null,
+                  "maxLength": null
+                }
+              }
+            },
+            "in": "path",
+            "name": "def",
+            "required": true
+          },
+          {
+            "schema": "object",
+            "in": "path",
+            "name": "type",
+            "required": true
+          },
+          { "in": "path", "name": "parse", "required": true },
+          { "in": "path", "name": "safeParse", "required": true },
+          { "in": "path", "name": "parseAsync", "required": true },
+          { "in": "path", "name": "safeParseAsync", "required": true },
+          { "in": "path", "name": "spa", "required": true },
+          { "in": "path", "name": "encode", "required": true },
+          { "in": "path", "name": "decode", "required": true },
+          { "in": "path", "name": "encodeAsync", "required": true },
+          { "in": "path", "name": "decodeAsync", "required": true },
+          { "in": "path", "name": "safeEncode", "required": true },
+          { "in": "path", "name": "safeDecode", "required": true },
+          { "in": "path", "name": "safeEncodeAsync", "required": true },
+          { "in": "path", "name": "safeDecodeAsync", "required": true }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "def": {
+                    "type": "object",
+                    "shape": {
+                      "success": {
+                        "def": { "type": "boolean" },
+                        "type": "boolean"
+                      },
+                      "message": {
+                        "def": { "type": "string" },
+                        "type": "string",
+                        "format": null,
+                        "minLength": null,
+                        "maxLength": null
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "def": {
+                    "type": "object",
+                    "shape": {
+                      "success": {
+                        "def": { "type": "boolean" },
+                        "type": "boolean"
+                      },
+                      "message": {
+                        "def": { "type": "string" },
+                        "type": "string",
+                        "format": null,
+                        "minLength": null,
+                        "maxLength": null
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "def": {
+                    "type": "object",
+                    "shape": {
+                      "success": {
+                        "def": { "type": "boolean" },
+                        "type": "boolean"
+                      },
+                      "message": {
+                        "def": { "type": "string" },
+                        "type": "string",
+                        "format": null,
+                        "minLength": null,
+                        "maxLength": null
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/publish/{channel}": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "def": {
+                  "type": "object",
+                  "shape": {
+                    "time": {
+                      "def": { "type": "string", "checks": [{}] },
+                      "type": "string",
+                      "format": "regex",
+                      "minLength": null,
+                      "maxLength": null
+                    },
+                    "mode": {
+                      "def": {
+                        "type": "enum",
+                        "entries": {
+                          "absolute": "absolute",
+                          "relative": "relative"
+                        }
+                      },
+                      "type": "enum",
+                      "enum": {
+                        "absolute": "absolute",
+                        "relative": "relative"
+                      },
+                      "options": ["absolute", "relative"]
+                    }
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "parameters": [
+          { "in": "path", "name": "toJSONSchema", "required": true },
+          {
+            "schema": {
+              "type": "object",
+              "shape": {
+                "channel": {
+                  "def": { "type": "string" },
+                  "type": "string",
+                  "format": null,
+                  "minLength": null,
+                  "maxLength": null
+                }
+              }
+            },
+            "in": "path",
+            "name": "def",
+            "required": true
+          },
+          {
+            "schema": "object",
+            "in": "path",
+            "name": "type",
+            "required": true
+          },
+          { "in": "path", "name": "parse", "required": true },
+          { "in": "path", "name": "safeParse", "required": true },
+          { "in": "path", "name": "parseAsync", "required": true },
+          { "in": "path", "name": "safeParseAsync", "required": true },
+          { "in": "path", "name": "spa", "required": true },
+          { "in": "path", "name": "encode", "required": true },
+          { "in": "path", "name": "decode", "required": true },
+          { "in": "path", "name": "encodeAsync", "required": true },
+          { "in": "path", "name": "decodeAsync", "required": true },
+          { "in": "path", "name": "safeEncode", "required": true },
+          { "in": "path", "name": "safeDecode", "required": true },
+          { "in": "path", "name": "safeEncodeAsync", "required": true },
+          { "in": "path", "name": "safeDecodeAsync", "required": true }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "def": {
+                    "type": "object",
+                    "shape": {
+                      "success": {
+                        "def": { "type": "boolean" },
+                        "type": "boolean"
+                      },
+                      "message": {
+                        "def": { "type": "string" },
+                        "type": "string",
+                        "format": null,
+                        "minLength": null,
+                        "maxLength": null
+                      },
+                      "currentTime": {
+                        "def": { "type": "string" },
+                        "type": "string",
+                        "format": null,
+                        "minLength": null,
+                        "maxLength": null
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "def": {
+                    "type": "object",
+                    "shape": {
+                      "success": {
+                        "def": { "type": "boolean" },
+                        "type": "boolean"
+                      },
+                      "message": {
+                        "def": { "type": "string" },
+                        "type": "string",
+                        "format": null,
+                        "minLength": null,
+                        "maxLength": null
+                      },
+                      "currentTime": {
+                        "def": { "type": "string" },
+                        "type": "string",
+                        "format": null,
+                        "minLength": null,
+                        "maxLength": null
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/set.clock": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "def": {
+                  "type": "object",
+                  "shape": {
+                    "time": {
+                      "def": { "type": "string", "checks": [{}] },
+                      "type": "string",
+                      "format": "regex",
+                      "minLength": null,
+                      "maxLength": null
+                    },
+                    "mode": {
+                      "def": {
+                        "type": "enum",
+                        "entries": {
+                          "absolute": "absolute",
+                          "relative": "relative"
+                        }
+                      },
+                      "type": "enum",
+                      "enum": {
+                        "absolute": "absolute",
+                        "relative": "relative"
+                      },
+                      "options": ["absolute", "relative"]
+                    }
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "def": {
+                    "type": "object",
+                    "shape": {
+                      "success": {
+                        "def": { "type": "boolean" },
+                        "type": "boolean"
+                      },
+                      "message": {
+                        "def": { "type": "string" },
+                        "type": "string",
+                        "format": null,
+                        "minLength": null,
+                        "maxLength": null
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "def": {
+                    "type": "object",
+                    "shape": {
+                      "success": {
+                        "def": { "type": "boolean" },
+                        "type": "boolean"
+                      },
+                      "message": {
+                        "def": { "type": "string" },
+                        "type": "string",
+                        "format": null,
+                        "minLength": null,
+                        "maxLength": null
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/start.timer": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "def": {
+                  "type": "object",
+                  "shape": {
+                    "time": {
+                      "def": { "type": "string", "checks": [{}] },
+                      "type": "string",
+                      "format": "regex",
+                      "minLength": null,
+                      "maxLength": null
+                    },
+                    "mode": {
+                      "def": {
+                        "type": "enum",
+                        "entries": {
+                          "absolute": "absolute",
+                          "relative": "relative"
+                        }
+                      },
+                      "type": "enum",
+                      "enum": {
+                        "absolute": "absolute",
+                        "relative": "relative"
+                      },
+                      "options": ["absolute", "relative"]
+                    }
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "def": {
+                    "type": "object",
+                    "shape": {
+                      "success": {
+                        "def": { "type": "boolean" },
+                        "type": "boolean"
+                      },
+                      "message": {
+                        "def": { "type": "string" },
+                        "type": "string",
+                        "format": null,
+                        "minLength": null,
+                        "maxLength": null
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "def": {
+                    "type": "object",
+                    "shape": {
+                      "success": {
+                        "def": { "type": "boolean" },
+                        "type": "boolean"
+                      },
+                      "message": {
+                        "def": { "type": "string" },
+                        "type": "string",
+                        "format": null,
+                        "minLength": null,
+                        "maxLength": null
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/stop.timer": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "def": {
+                  "type": "object",
+                  "shape": {
+                    "time": {
+                      "def": { "type": "string", "checks": [{}] },
+                      "type": "string",
+                      "format": "regex",
+                      "minLength": null,
+                      "maxLength": null
+                    },
+                    "mode": {
+                      "def": {
+                        "type": "enum",
+                        "entries": {
+                          "absolute": "absolute",
+                          "relative": "relative"
+                        }
+                      },
+                      "type": "enum",
+                      "enum": {
+                        "absolute": "absolute",
+                        "relative": "relative"
+                      },
+                      "options": ["absolute", "relative"]
+                    }
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "def": {
+                    "type": "object",
+                    "shape": {
+                      "success": {
+                        "def": { "type": "boolean" },
+                        "type": "boolean"
+                      },
+                      "message": {
+                        "def": { "type": "string" },
+                        "type": "string",
+                        "format": null,
+                        "minLength": null,
+                        "maxLength": null
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "def": {
+                    "type": "object",
+                    "shape": {
+                      "success": {
+                        "def": { "type": "boolean" },
+                        "type": "boolean"
+                      },
+                      "message": {
+                        "def": { "type": "string" },
+                        "type": "string",
+                        "format": null,
+                        "minLength": null,
+                        "maxLength": null
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

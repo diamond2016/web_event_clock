@@ -1,0 +1,44 @@
+  services:
+    nats:
+      image: nats:latest
+      ports:
+        - "4222:4222"
+        - "6222:6222" # Add this line to allow frontend WebSocket connections
+      # Optional: add -js if you need JetStream, otherwise it's fine as is
+    time-publisher:
+      build:
+        context: . # Use the root as context so it can see packages/shared
+        dockerfile: apps/time-publisher/Dockerfile
+      ports:
+        - "3002:3002" # Adjust port if needed
+      environment:
+        - NATS_URL=nats://nats:4222
+        - SKIP_INSTALL_SCRIPTS=true # Add this to ignore husky/prepare scripts
+      depends_on:
+      - nats
+
+    backend:
+      build:
+        context: .
+        dockerfile: apps/backend/Dockerfile
+      ports:
+        - "3001:3001"
+      environment:
+        - NATS_SERVERS=nats://nats:4222
+        - HOST=0.0.0.0
+      depends_on:
+        - nats
+        - time-publisher
+
+    frontend:
+      build:
+        context: .
+        dockerfile: apps/frontend/Dockerfile
+      ports:
+          - "5173:80" # Map your local 5173 to the container's 80
+      environment:
+        - VITE_NATS_WS=ws://localhost:6222 # Example for browser connection
+      depends_on:
+        - backend
+
+

@@ -1,0 +1,29 @@
+{
+  "supportsES6": true,
+  "withSeparateModelsAndApi": true,
+  "withInterfaces": true,
+
+  "apiPackage": "apis",
+  "modelPackage": "models",
+
+  "modelPropertyNaming": "original",
+  "enumPropertyNaming": "original",
+  "enumNamePrefix": "",
+  "enumNameSuffix": "",
+
+  "withoutPrefixEnums": true,
+  "useSingleRequestParameter": false,
+
+  "hideGenerationTimestamp": true,
+  "generateSupportingFiles": false,
+  "generateModelTests": false,
+  "generateApiTests": false,
+  "generateApiDocumentation": false,
+  "generateModelDocumentation": false,
+
+  "npmName": "@it.diamondnet/web-event-clock",
+  "npmVersion": "1.0.0",
+  "licenseName": "UNLICENSED",
+
+  "axiosVersion": "^1.7.7"
+}

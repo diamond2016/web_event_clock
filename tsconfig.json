@@ -1,0 +1,45 @@
+// tsconfig.json (Root)
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "baseUrl": "./",
+    "paths": {
+      // Map #/* to the new time-publisher app
+      "#/time-publisher/*": ["apps/time-publisher/src/*"], 
+      // Keep the existing mapping for the main backend if it uses src/
+      "#/backend/*": ["apps/backend/src/*"], 
+      // Map #/* to shared packages if needed, or be more specific
+      "#/shared/*": ["packages/shared/src/*"] 
+      // Consider removing a generic "#/*" if you want to enforce specificity
+    },
+    "strict": true, // Good practice
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist", // Or adjust as needed for your build output,
+    "ignoreDeprecations": "6.0",
+  },
+  // Include all relevant directories
+  "include": [
+    "apps/backend/**/*.ts",
+    "apps/frontend/**/*.ts", // Assuming frontend also uses TS and needs compiling
+    "apps/time-publisher/**/*.ts", 
+    "packages/shared/**/*.ts"
+  ],
+  // Exclude build output, node_modules, etc.
+  "exclude": [
+    "node_modules", 
+    "dist", 
+    "apps/backend/dist", // Exclude previous build outputs if they are different
+    "apps/time-publisher/dist",
+    "**/*.spec.ts"
+  ],
+  "pnpm": {
+    "inject-workspace-packages": true
+  },
+  "scripts": {
+  "build": "pnpm --filter shared build && pnpm --filter time-publisher build && pnpm --filter backend build && pnpm --filter builòd frontend"
+}
+}

@@ -1,0 +1,12 @@
+// apps/time-publisher/tsconfig.json
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    // Rimuovi "composite": true se non stai usando "tsc --build" esplicitamente
+    "types": ["node"],
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

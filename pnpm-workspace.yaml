@@ -1,0 +1,8 @@
+packages:
+  - 'apps/*'
+  - 'packages/*'
+
+allowBuilds:
+  '@openapitools/openapi-generator-cli': false
+  esbuild: true
+

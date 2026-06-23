@@ -1,0 +1,65 @@
+# Dependencies
+node_modules/
+NodeNext/
+.pnpm-store/
+
+# Build output
+dist/
+build/
+.next/
+.nuxt/
+.output/
+coverage/
+.nyc_output/
+
+# TypeScript
+*.tsbuildinfo
+
+# AsyncAPI / generated artifacts
+.asyncapi/
+asyncapi-generated/
+src/generated/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Environment files
+.env
+.env.*
+!.env.example
+!.env.template
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+.project
+.settings/
+.classpath
+.factorypath
+
+# Husky and Lint-staged
+.husky/
+
+# Misc
+.eslintcache
+.stylelintcache
+.prettiercache
+.cache/
+*cache*.*
+
+# Project specific
+issues/
+PLAN.md
+

@@ -1,0 +1,33 @@
+# Ignore dependencies and build artifacts
+node_modules
+**/node_modules
+build
+**/build
+dist
+**/dist
+**/dist/**
+
+# Ignore editor and OS files
+.git
+.gitignore
+.vscode
+.idea
+.DS_Store
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Ignore local environment files
+.env
+.env.*
+
+# Ignore Docker files not needed in build context
+docker-compose.override.yml
+
+# Keep workspace manifests and source code
+!package.json
+!pnpm-workspace.yaml
+!apps/backend/package.json
+!packages/shared/package.json
+!apps/backend/src/
+!packages/shared/src/

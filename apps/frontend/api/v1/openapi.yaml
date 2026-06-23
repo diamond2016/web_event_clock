@@ -1,0 +1,160 @@
+openapi: 3.0.3
+info:
+  title: Web Event Clock API
+  version: 1.0.0
+
+paths:
+
+  /api/health:
+    get:
+      summary: Health check
+      responses:
+        '200':
+          description: Service is healthy
+
+  /api/subscribe/{channel}:
+    post:
+      summary: Subscribe to a clock event channel
+      parameters:
+        - name: channel
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ClockChannel'
+      responses:
+        '201':
+          description: Subscription result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponsePayload'
+
+  /api/unsubscribe/{channel}:
+    post:
+      summary: Unsubscribe from a clock event channel
+      parameters:
+        - name: channel
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ClockChannel'
+      responses:
+        '200':
+          description: Unsubscription result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponsePayload'
+
+  /api/publish/{channel}:
+    post:
+      summary: Publish a time event to a channel
+      parameters:
+        - name: channel
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ClockChannel'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetRequestPayload'
+      responses:
+        '200':
+          description: Publish result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetResponsePayload'
+
+  /api/set.clock:
+    post:
+      summary: Set the main clock (absolute mode)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetRequestPayload'
+      responses:
+        '200':
+          description: Clock set result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetResponsePayload'
+
+  /api/start.timer:
+    post:
+      summary: Start the timer (relative mode)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetRequestPayload'
+      responses:
+        '200':
+          description: Timer start result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetResponsePayload'
+
+  /api/stop.timer:
+    post:
+      summary: Stop the timer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetRequestPayload'
+      responses:
+        '200':
+          description: Timer stop result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetResponsePayload'
+
+components:
+  schemas:
+
+    ClockChannel:
+      type: string
+      enum: [hhmm, hhmmss]
+
+    ResponsePayload:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+      required: [success]
+
+    SetRequestPayload:
+      type: object
+      properties:
+        time:
+          type: string
+          example: "12:34:56"
+        mode:
+          type: string
+          enum: [absolute, relative]
+      required: [time]
+
+    SetResponsePayload:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        currentTime:
+          type: string
+          example: "12:34:56"
+      required: [success]

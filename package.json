@@ -1,0 +1,26 @@
+{
+  "name": "web-event-clock",
+  "version": "1.0.0",
+  "private": true,
+  "imports": {
+  "#/*": "./dist/*.js"
+  },
+  "scripts": {
+    "dev": "pnpm --parallel --filter \"*\" dev",
+    "dev:frontend": "pnpm --filter frontend dev",
+    "dev:backend": "pnpm --filter backend dev",
+    "dev:time-publisher": "pnpm --filter time-publisher dev",
+    "build": "pnpm --parallel --filter \"*\" build",
+    "build:frontend": "pnpm --filter frontend build",
+    "build:backend": "pnpm --filter backend build",
+    "lint": "pnpm --parallel --filter \"*\" lint",
+
+    "test": "pnpm --parallel --filter \"*\" test",
+    "test:frontend": "pnpm --filter frontend test",
+    "test:backend": "pnpm --filter backend test",
+    "test:shared": "pnpm --filter @web-event-clock/shared test"
+  },
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  }
+}
